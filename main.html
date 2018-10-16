@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>SuperHeroConnect</title>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <strong><h1>Book of Super Faces</h1></strong>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Friends</button>
+                <div id="demo" class="collapse in">
+                    <li><a href="https://www.w3schools.com">Thor</a></li>
+                    <li><a href="https://www.w3schools.com">Thanos</a></li>
+                    <li><a href="https://www.w3schools.com">Captain America</a></li>
+                    <li><a href="https://www.w3schools.com">Iron Man</a></li>
+                    <li><a href="https://www.w3schools.com">Hulk</a></li>
+                    <li><a href="https://www.w3schools.com">Loki</a></li>
+                    <li><a href="https://www.w3schools.com">Black Widow</a></li>
+                    <li><a href="https://www.w3schools.com">Vision</a></li>
+                    <li><a href="https://www.w3schools.com">Nick Fury</a></li>
+                    <li><a href="https://www.w3schools.com">Doctor Strange</a></li>
+                    <li><a href="https://www.w3schools.com">Black Panter</a></li>
+                    <li><a href="https://www.w3schools.com">Gamora</a></li>
+                    <li><a href="https://www.w3schools.com">Ant Man</a></li>
+                    <li><a href="https://www.w3schools.com">Captain Marvel</a></li>
+                </div>
+            </div>
+
+            <div class="col-sm-10">
+                <div class="alert alert-success">
+                    <div class="form-group">
+                        <label for="comment">What's on your mind today {{username}}</label>
+                        <textarea class="form-control" rows="3" id="comment"></textarea>
+                        <button type="submit" class="btn btn-default">Post</button>
+                    </div>
+                </div>
+
+                <h3>Top Posts</h3>
+
+                <div class="alert alert-info">
+                    <a href="https://www.w3schools.com"><img src = "https://s3.amazonaws.com/media.mediapost.com/images/inline_image/2013/04/23/GEICO-Gecko-B.jpg"></a>
+                    <strong><p>{{username}}</p></strong></strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                    <p>kjarlfjs argshregwfdf sregiktjqwtera aergssw</p>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reactions
+                        <span class="caret"></span></button> Likes: {{21}} Loves: {{8}} Laughs: {{43}} Wows: {{2}} Sads: {{0}} Angrys: {{3}}
+
+                        <ul class="dropdown-menu">
+                            <a href="#"><img src = "https://i.imgur.com/wVAJS8T.png" height = 50 width = 50></a>
+                            <a href="#"><img src = "https://i.imgur.com/y7qZQS3.png" height = 50 width = 50></a>
+                            <a href="#"><img src = "https://i.imgur.com/eq69HEz.png" height = 50 width = 50></a>
+                            <a href="#"><img src = "https://i.imgur.com/XQSbgpw.png" height = 50 width = 50></a>
+                            <a href="#"><img src = "https://i.imgur.com/JlQiyAu.png" height = 50 width = 50></a>
+                            <a href="#"><img src = "https://i.imgur.com/P4Xm6Ds.png" height = 50 width = 50></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
