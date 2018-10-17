@@ -9,7 +9,7 @@ angular.module('Heroes', [])
             {hero: "Black Widow", image: "Media/bwidow.jpg", content: "The truth is a matter of circumstance. It's not all things to all people all the time. And neither am I.", likes: 2, loves: 4, laughs: 0, wows: 35, sads: 0, angrys: 1},
             {hero: "Captain America", image: "Media/cap.jpg", content: "I am Steve Rogers.", likes: 32, loves: 0, laughs: 45, wows: 0, sads: 1, angrys: 0},
             {hero: "Dr. Strange", image: "Media/dr_strange.jpg", content: "There is no such thing as spirit! We are made of matter and nothing more. You’re just another tiny, momentary speck within an indifferent universe.", likes: 15, loves: 56, laughs: 0, wows: 12, sads: 2, angrys: 0},
-            {hero: "Hulk", image: "Media/hulk.jpg", content: "You're making me angry. You wouldn't like me when I'm angry.", likes: 5, loves: 0, laughs: 0, wows: 0, sads: 2, angrys: 34}
+            {hero: "Hulk", image: "Media/hulk.jpg", content: "You're making me angry. You wouldn't like me when I'm angry.", likes: 20, loves: 0, laughs: 0, wows: 0, sads: 2, angrys: 34}
             ],
     heroes: ['Thor', 'Thanos', 'Captain America', 'Iron Man', 
              'Hulk', 'Loki', 'Black Widow', 'Vision', 'Nick Fury', 

@@ -8,4 +8,10 @@ img
 .jumbotron
 {
     height:100%;
+    background-color: #89afbc;
+}
+
+body
+{
+    background-color: lightblue;
 }
