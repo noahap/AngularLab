@@ -48,7 +48,7 @@ function($scope, postFactory){
     var address = $scope.images.find(image => image.hero == $scope.currentPage);
     var post = {hero: $scope.currentPage, image: address.image, content: $scope.formContent.text, likes: 0, loves: 0, laughs: 0, wows: 0, sads: 0, angrys: 0}
     $scope.posts.push(post);
-    $scope.formContent = '';
+    $scope.formContent.text = '';
     postFactory.posts.push(post);
   };
 
