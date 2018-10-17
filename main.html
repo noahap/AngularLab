@@ -8,52 +8,86 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+  
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="heroes.js"></script>
     <title>SuperHeroConnect</title>
 </head>
 
-<body>
+<body ng-app="Heroes">
     <div class="jumbotron text-center">
         <strong><h1>Book of Super Faces</h1></strong>
     </div>
 
-    <div class="container">
+    <div class="container" ng-controller="MainCtrl">
         <div class="row">
             <div class="col-sm">
+                <button type="button" class="btn btn-warning" ng-click="goHome()">Home</button>
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Users</button>
-                <button type="button" class="btn btn-warning">Home</button>
-                <div id="demo" class="collapse in">
-                    <li><a href="https://www.w3schools.com">Thor</a></li>
-                    <li><a href="https://www.w3schools.com">Thanos</a></li>
-                    <li><a href="https://www.w3schools.com">Captain America</a></li>
-                    <li><a href="https://www.w3schools.com">Iron Man</a></li>
-                    <li><a href="https://www.w3schools.com">Hulk</a></li>
-                    <li><a href="https://www.w3schools.com">Loki</a></li>
-                    <li><a href="https://www.w3schools.com">Black Widow</a></li>
-                    <li><a href="https://www.w3schools.com">Vision</a></li>
-                    <li><a href="https://www.w3schools.com">Nick Fury</a></li>
-                    <li><a href="https://www.w3schools.com">Doctor Strange</a></li>
-                    <li><a href="https://www.w3schools.com">Black Panter</a></li>
-                    <li><a href="https://www.w3schools.com">Gamora</a></li>
-                    <li><a href="https://www.w3schools.com">Ant Man</a></li>
-                    <li><a href="https://www.w3schools.com">Captain Marvel</a></li>
+                <div id="demo" class="collapse in" ng-repeat="hero in heroes">
+                    <li ng-click="userPage(hero)"><a href="#">{{hero}}</a></li>
                 </div>
-
+                <div class="dropdown" style="padding-top:20px;">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter Posts
+                    <ul class="dropdown-menu">
+                            <a href="#" ng-click="changeFilter('likes')"><img src = "https://i.imgur.com/wVAJS8T.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="changeFilter('loves')"><img src = "https://i.imgur.com/y7qZQS3.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="changeFilter('laughs')"><img src = "https://i.imgur.com/eq69HEz.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="changeFilter('wows')"><img src = "https://i.imgur.com/XQSbgpw.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="changeFilter('sads')"><img src = "https://i.imgur.com/JlQiyAu.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="changeFilter('angrys')"><img src = "https://i.imgur.com/P4Xm6Ds.png" height = 50 width = 50></a>
+                        </ul>
+                </div>
             </div>
 
             <div class="col-sm-10">
-                <!---if (notProfile: don't show post box)
-                <div class="alert alert-success">
-                    <div class="form-group">
-                        <label for="comment">What's on your mind today {{username}}</label>
-                        <textarea class="form-control" rows="3" id="comment"></textarea>
-                        <button type="submit" class="btn btn-default">Post</button>
-                    </div>
-                </div>--->
+                
+                <div ng-if="!isHome">
+                    <form ng-submit="addPost()"
+                      style="margin-top:30px;">
+                      <h3>What's on your mind {{currentPage}}?</h3>
+                
+                      <div class="form-group">
+                        <input type="text"
+                        class="form-control"
+                        placeholder="Title"
+                        ng-model="formContent.text"></input>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
 
                 <h3>Recent Posts</h3>
 
-                
+                <div class="alert alert-info" ng-repeat="post in posts | orderBy:'-' + currentFilter">
+                    <a href="#" ng-click="filterPosts(post)"><img src = {{post.image}}></a>
+                    <strong ng-click="filterPosts(post)">{{post.hero}}</strong>
+                    <p></p>
+                    <p>{{post.content}}</p>
+                    </p>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reactions
+                        <span class="caret"></span></button> <img src = "https://i.imgur.com/wVAJS8T.png" height = 50 width = 50> {{post.likes}} 
+                                                            <img src = "https://i.imgur.com/y7qZQS3.png" height = 50 width = 50> {{post.loves}} 
+                                                            <img src = "https://i.imgur.com/eq69HEz.png" height = 50 width = 50> {{post.laughs}} 
+                                                            <img src = "https://i.imgur.com/XQSbgpw.png" height = 50 width = 50> {{post.wows}} 
+                                                            <img src = "https://i.imgur.com/JlQiyAu.png" height = 50 width = 50> {{post.sads}} 
+                                                            <img src = "https://i.imgur.com/P4Xm6Ds.png" height = 50 width = 50> {{post.angrys}}
+
+                        <ul class="dropdown-menu">
+                            <a href="#" ng-click="upLikes(post)"><img src = "https://i.imgur.com/wVAJS8T.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="upLoves(post)"><img src = "https://i.imgur.com/y7qZQS3.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="upLaughs(post)"><img src = "https://i.imgur.com/eq69HEz.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="upWows(post)"><img src = "https://i.imgur.com/XQSbgpw.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="upSads(post)"><img src = "https://i.imgur.com/JlQiyAu.png" height = 50 width = 50></a>
+                            <a href="#" ng-click="upAngrys(post)"><img src = "https://i.imgur.com/P4Xm6Ds.png" height = 50 width = 50></a>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
             </div>
         </div>
     </div>
